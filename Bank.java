@@ -38,6 +38,35 @@ public class Bank {
         }
         return null; // Account not found
     }
+    public void transferWithFlatFee(Account fromAccount, Account toAccount, double amount) {
+        if (fromAccount.getBalance() >= amount) {
+            fromAccount.withdraw(amount + transactionFlatFeeAmount); // Apply flat fee
+            toAccount.deposit(amount);
+            totalTransferAmount += amount;
+            totalTransactionFeeAmount += transactionFlatFeeAmount;
+            // Add transaction to history with correct originating and resulting account IDs
+            fromAccount.getTransactionHistory().add(new Transaction(amount, fromAccount.getAccountId(), toAccount.getAccountId(), "Transfer with flat fee"));
+            toAccount.getTransactionHistory().add(new Transaction(amount, fromAccount.getAccountId(), toAccount.getAccountId(), "Transfer with flat fee"));
+            System.out.println("Transaction successful with flat fee.");
+        } else {
+            System.out.println("Insufficient funds for transaction.");
+        }
+    }
+    public void transferWithPercentageFee(Account fromAccount, Account toAccount, double amount) {
+        if (fromAccount.getBalance() >= amount) {
+            double fee = (transactionPercentFeeValue / 100) * amount; // Calculate percentage fee
+            fromAccount.withdraw(amount + fee); // Apply percentage fee
+            toAccount.deposit(amount);
+            totalTransferAmount += amount;
+            totalTransactionFeeAmount += fee;
+            // Add transaction to history with correct originating and resulting account IDs
+            fromAccount.getTransactionHistory().add(new Transaction(amount, fromAccount.getAccountId(), toAccount.getAccountId(), "Transfer with percentage fee"));
+            toAccount.getTransactionHistory().add(new Transaction(amount, fromAccount.getAccountId(), toAccount.getAccountId(), "Transfer with percentage fee"));
+            System.out.println("Transaction successful with percentage fee.");
+        } else {
+            System.out.println("Insufficient funds for transaction.");
+        }
+    }
 
 
 

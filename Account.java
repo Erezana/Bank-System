@@ -36,4 +36,8 @@ public class Account {
     public String getUserName() {
         return userName;
     }
+    public List<Transaction> getTransactionHistory()
+    {
+        return transactionHistory;
+    }
 }

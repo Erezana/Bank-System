@@ -110,6 +110,42 @@ public class Main {
                         System.out.println("Account not found.");
                 }
         }
+        private static void transfer() {
+                if (bank == null) {
+                        System.out.println("Please create a bank first.");
+                        return;
+                }
+
+                System.out.print("Enter sender account ID: ");
+                int fromAccountId = scanner.nextInt();
+                Account fromAccount = bank.getAccount(fromAccountId);
+                if (fromAccount == null) {
+                        System.out.println("Sender account not found.");
+                        return;
+                }
+
+                System.out.print("Enter recipient account ID: ");
+                int toAccountId = scanner.nextInt();
+                Account toAccount = bank.getAccount(toAccountId);
+                if (toAccount == null) {
+                        System.out.println("Recipient account not found.");
+                        return;
+                }
+
+                System.out.print("Enter transfer amount: ");
+                double amount = scanner.nextDouble();
+
+                System.out.print("Enter transaction type (1 for flat fee, 2 for percentage fee): ");
+                int transactionType = scanner.nextInt();
+
+                if (transactionType == 1) {
+                        bank.transferWithFlatFee(fromAccount, toAccount, amount);
+                } else if (transactionType == 2) {
+                        bank.transferWithPercentageFee(fromAccount, toAccount, amount);
+                } else {
+                        System.out.println("Invalid transaction type.");
+                }
+        }
 
 
 
