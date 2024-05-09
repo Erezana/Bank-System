@@ -11,9 +11,13 @@ public class Main {
 
 
                 while (!exit) {
-                        System.out.print("Enter your choice: ");
+                        System.out.print("Enter your choice [0-8]: ");
                         int choice = scanner.nextInt();
                         scanner.nextLine();
+                        if (choice < 0 || choice > 8) {
+                                System.out.println("Invalid choice. Please enter a number from 0 to 8.");
+                                continue;
+                        }
 
                         switch (choice) {
                                 case 1:
@@ -66,7 +70,11 @@ public class Main {
         private static void createBank(){
                 System.out.println("Creating a new bank...");
                 System.out.print("Enter bank name: ");
-                String bankName = scanner.nextLine(); // Consume newline character
+                String bankName = scanner.nextLine();
+                if (!bankName.matches("[a-zA-Z]+")) {
+                        System.out.println("Invalid bank name. Please enter letters only.");
+                        return;
+                }
 
                 System.out.print("Enter transaction flat fee amount: ");
                 double flatFeeAmount = Double.parseDouble(scanner.nextLine());
@@ -87,6 +95,10 @@ public class Main {
                 int accountId = scanner.nextInt();
                 System.out.print("Enter user name: ");
                 String userName = scanner.next();
+                if (!userName.matches("[a-zA-Z]+")) {
+                        System.out.println("Invalid user name. Please enter letters only.");
+                        return;
+                }
                 bank.createAccount(accountId, userName);
         }
         private static void deposit(){
