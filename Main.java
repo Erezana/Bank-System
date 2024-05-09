@@ -113,7 +113,7 @@ public class Main {
                         System.out.print("Enter deposit amount: ");
                         double amount = scanner.nextDouble();
                         account.deposit(amount);
-                        System.out.println("Deposit successful. New balance: $" + account.getBalance() +"with account ID" + accountId);
+                        System.out.println("Deposit successful. New balance: $" + account.getBalance() +" with account ID " + accountId);
                 } else {
                         System.out.println("Account not found.");
                 }
