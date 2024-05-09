@@ -48,10 +48,10 @@ Has the required attributes, such as account ID, user name, balance, and transac
 - Transaction Class:
 The Transaction class represents a financial transaction within the banking system. It has attributes such as transaction amount, originating account ID, resulting account ID, and transaction reason. This class provides a method to format transaction details as a string. It is used by the Account class to record and track individual transactions for each account.
 
-- Bank Class"
+- Bank Class:
 This class provides methods to create a new bank, open accounts, perform transactions, display account details, and manage transaction fees. 
 
-- Main Class"
+- Main Class:
 This class provides a command-line interface for users to interact with the system's functionalities, such as creating a bank, opening accounts, performing transactions, and checking account details.
 
 
