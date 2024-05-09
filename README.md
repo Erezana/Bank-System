@@ -19,23 +19,23 @@ Check Bank Accounts: Displays a list of accounts in the bank along with their de
 How to Start the Application
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 To start the Bank Management System application, follow these steps:
--Run the Main Method:
+- Run the Main Method:
    Execute the main method of the application. This will launch the application and display a menu with 9 options in the console.
--Choose an Option:
+- Choose an Option:
   After the menu is displayed, you'll be prompted to choose a number corresponding to the service you want to perform.
   Options range from creating a bank, opening an account, depositing funds, withdrawing funds, transferring funds, displaying transactions, checking account balances, viewing the list of 
   bank accounts, and exiting the program.
--Create a Bank:
+- Create a Bank:
   Before performing any banking services, you must create a bank by selecting the appropriate option from the menu.
   Enter the bank name, transaction flat fee amount, and transaction percent fee value when prompted.
--Open an Account:
+- Open an Account:
   Once the bank is created, you can open an account by selecting the respective option from the menu.
   Enter the account ID and user name when prompted.
--Perform Banking Services:
+- Perform Banking Services:
   With the bank and account created, you can now perform various banking services such as depositing, withdrawing, transferring funds, and checking account details.
   Note that certain services, such as deposit, withdrawal, and transaction history display, require a valid account ID. Ensure that you have created an account before attempting these 
   services.
--Exit the Program:
+- Exit the Program:
 To exit the program, select the "Exit" option from the menu.
 
 Structure:
