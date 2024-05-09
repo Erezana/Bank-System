@@ -1,15 +1,15 @@
-import java.util.List;
+import java.util.*;
 
 public class Account {
     private int accountId;
     private String userName;
     private double balance;
     private List<Transaction> transactionHistory;
-
     public Account(int accountId, String userName) {
         this.accountId= accountId;
         this.userName=userName;
         this.balance=0.0;
+        this.transactionHistory = new ArrayList<>();
     }
     public void withdraw(double amount){
         if(amount<=0) {
@@ -21,11 +21,12 @@ public class Account {
             return;
         }
         balance -=amount;
+        transactionHistory.add(new Transaction(amount, accountId, accountId, "Withdrawal"));
     }
 
     public void deposit(double amount){
         balance+=amount;
-
+        transactionHistory.add(new Transaction(amount, accountId, accountId, "Deposit"));
     }
     public double getBalance() {
         return balance;

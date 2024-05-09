@@ -36,35 +36,51 @@ public class Bank {
                 return account;
             }
         }
-        return null; // Account not found
+        return null;
     }
     public void transferWithFlatFee(Account fromAccount, Account toAccount, double amount) {
         if (fromAccount.getBalance() >= amount) {
-            fromAccount.withdraw(amount + transactionFlatFeeAmount); // Apply flat fee
+            fromAccount.withdraw(amount + transactionFlatFeeAmount);
             toAccount.deposit(amount);
             totalTransferAmount += amount;
             totalTransactionFeeAmount += transactionFlatFeeAmount;
-            // Add transaction to history with correct originating and resulting account IDs
+
             fromAccount.getTransactionHistory().add(new Transaction(amount, fromAccount.getAccountId(), toAccount.getAccountId(), "Transfer with flat fee"));
             toAccount.getTransactionHistory().add(new Transaction(amount, fromAccount.getAccountId(), toAccount.getAccountId(), "Transfer with flat fee"));
             System.out.println("Transaction successful with flat fee.");
         } else {
-            System.out.println("Insufficient funds for transaction.");
+            System.out.println("Not enough funds.");
         }
     }
     public void transferWithPercentageFee(Account fromAccount, Account toAccount, double amount) {
         if (fromAccount.getBalance() >= amount) {
-            double fee = (transactionPercentFeeValue / 100) * amount; // Calculate percentage fee
-            fromAccount.withdraw(amount + fee); // Apply percentage fee
+            double fee = (transactionPercentFeeValue / 100) * amount;
+            fromAccount.withdraw(amount + fee);
             toAccount.deposit(amount);
             totalTransferAmount += amount;
             totalTransactionFeeAmount += fee;
-            // Add transaction to history with correct originating and resulting account IDs
+
             fromAccount.getTransactionHistory().add(new Transaction(amount, fromAccount.getAccountId(), toAccount.getAccountId(), "Transfer with percentage fee"));
             toAccount.getTransactionHistory().add(new Transaction(amount, fromAccount.getAccountId(), toAccount.getAccountId(), "Transfer with percentage fee"));
             System.out.println("Transaction successful with percentage fee.");
         } else {
-            System.out.println("Insufficient funds for transaction.");
+            System.out.println("Not enough funds.");
+        }
+    }
+    public void displayAccountTransactions(Account account) {
+        List<Transaction> transactions = account.getTransactionHistory();
+        for (Transaction transaction : transactions) {
+            System.out.println(transaction);
+        }
+    }
+    public void displayBankAccounts() {
+        if (accounts.isEmpty()) {
+            System.out.println("No accounts found in the bank.");
+        } else {
+            System.out.println("List of Bank Accounts:");
+            for (Account account : accounts) {
+                System.out.println("Account ID: " + account.getAccountId() + ", User Name: " + account.getUserName() + ", Balance: $" + account.getBalance());
+            }
         }
     }
 

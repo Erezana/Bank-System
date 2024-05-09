@@ -6,8 +6,9 @@ public class Main {
 
         public static void main(String[] args) {
                 bank =null;
-                printMenu();
                 boolean exit = false;
+                printMenu();
+
 
                 while (!exit) {
                         System.out.print("Enter your choice: ");
@@ -27,6 +28,23 @@ public class Main {
                                 case 4:
                                         withdraw();
                                         break;
+                                case 5:
+                                        transfer();
+                                        break;
+                                case 6:
+                                        viewTransactionHistory();
+                                        break;
+                                case 7:
+                                        checkAccountBalance();
+                                        break;
+                                case 8:
+                                        seeListOfBankAccounts();
+                                        break;
+                                case 0:
+                                        System.out.println("Exiting program. Goodbye!");
+                                        exit = true;
+                                default:
+                                        System.out.println("Invalid choice. Please enter a valid option.");
                         }
                 }
 
@@ -115,7 +133,6 @@ public class Main {
                         System.out.println("Please create a bank first.");
                         return;
                 }
-
                 System.out.print("Enter sender account ID: ");
                 int fromAccountId = scanner.nextInt();
                 Account fromAccount = bank.getAccount(fromAccountId);
@@ -145,6 +162,47 @@ public class Main {
                 } else {
                         System.out.println("Invalid transaction type.");
                 }
+        }
+        private static void viewTransactionHistory() {
+                if (bank == null) {
+                        System.out.println("Please create a bank first.");
+                        return;
+                }
+
+                System.out.print("Enter account ID: ");
+                int accountId = scanner.nextInt();
+                Account account = bank.getAccount(accountId);
+
+                if (account != null) {
+                        bank.displayAccountTransactions(account);
+                } else {
+                        System.out.println("Account not found.");
+                }
+        }
+        private static void checkAccountBalance() {
+                if (bank == null) {
+                        System.out.println("Please create a bank first.");
+                        return;
+                }
+
+                System.out.print("Enter account ID: ");
+                int accountId = scanner.nextInt();
+
+                Account account = bank.getAccount(accountId);
+                if (account != null) {
+                        double balance = account.getBalance();
+                        System.out.println("Account balance for account ID " + accountId + ": $" + balance);
+                } else {
+                        System.out.println("Account not found.");
+                }
+        }
+        private static void seeListOfBankAccounts() {
+                if (bank == null) {
+                        System.out.println("Please create a bank first.");
+                        return;
+                }
+
+                bank.displayBankAccounts();
         }
 
 
