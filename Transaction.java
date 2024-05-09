@@ -10,5 +10,8 @@ public class Transaction {
         this.resultingAccountId = resultingAccountId;
         this.transactionReason = transactionReason;
     }
+    public String toString() {
+        return "Transaction: " + transactionReason + ", Amount: $" + amount + ", Originating Account ID: " + originatingAccountId + ", Resulting Account ID: " + resultingAccountId;
+    }
 }
 
