@@ -15,5 +15,11 @@ public class Bank {
         this.totalTransactionFeeAmount = 0.0;
         this.totalTransferAmount = 0.0;
     }
+    public void createAccount(int accountId, String userName){
+        Account account = new Account(accountId, userName);
+        accounts.add(account);
+        System.out.println("Account created successfully");
+    }
+
 
 }
