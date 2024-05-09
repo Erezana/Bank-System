@@ -67,12 +67,23 @@ public class Bank {
             System.out.println("Not enough funds.");
         }
     }
-    public void displayAccountTransactions(Account account) {
+   /* public void displayAccountTransactions(Account account) {
         List<Transaction> transactions = account.getTransactionHistory();
         for (Transaction transaction : transactions) {
             System.out.println(transaction);
         }
-    }
+    }*/
+   public void displayAccountTransactions(Account account) {
+       List<Transaction> transactions = account.getTransactionHistory();
+       if (transactions.isEmpty()) {
+           System.out.println("No transactions for account ID " + account.getAccountId());
+       } else {
+           for (Transaction transaction : transactions) {
+               System.out.println(transaction);
+           }
+       }
+   }
+
     public void displayBankAccounts() {
         if (accounts.isEmpty()) {
             System.out.println("No accounts found in the bank.");
