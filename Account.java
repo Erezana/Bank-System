@@ -1,7 +1,10 @@
+import java.util.List;
+
 public class Account {
     private int accountId;
     private String userName;
     private double balance;
+    private List<Transaction> transactionHistory;
 
     public Account(int accountId, String userName) {
         this.accountId= accountId;

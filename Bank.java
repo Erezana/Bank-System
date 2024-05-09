@@ -16,10 +16,15 @@ public class Bank {
         this.totalTransferAmount = 0.0;
     }
     public void createAccount(int accountId, String userName){
+        if (String.valueOf(accountId).length() != 4) {
+            System.out.println("Account ID must be a 4-digit number.");
+            return;
+        }
         Account account = new Account(accountId, userName);
         accounts.add(account);
         System.out.println("Account created successfully");
     }
+
 
 
 }
