@@ -2,8 +2,34 @@ import java.util.*;
 public class Main {
         private static Bank bank;
         private static Scanner scanner = new Scanner(System.in);
+
+
         public static void main(String[] args) {
                 bank =null;
+                printMenu();
+                boolean exit = false;
+
+                while (!exit) {
+                        System.out.print("Enter your choice: ");
+                        int choice = scanner.nextInt();
+                        scanner.nextLine();
+
+                        switch (choice) {
+                                case 1:
+                                        createBank();
+                                        break;
+                                case 2:
+                                        openAccount();
+                                        break;
+                                case 3:
+                                        deposit();
+                                        break;
+                                case 4:
+                                        withdraw();
+                                        break;
+                        }
+                }
+
 
         }
         private static void printMenu(){
@@ -45,5 +71,47 @@ public class Main {
                 String userName = scanner.next();
                 bank.createAccount(accountId, userName);
         }
+        private static void deposit(){
+                if (bank == null) {
+                        System.out.println("Please create a bank first.");
+                        return;
+                }
+                System.out.print("Enter account ID: ");
+                int accountId = scanner.nextInt();
+                Account account = bank.getAccount(accountId);
+                if (account != null) {
+                        System.out.print("Enter deposit amount: ");
+                        double amount = scanner.nextDouble();
+                        account.deposit(amount);
+                        System.out.println("Deposit successful. New balance: $" + account.getBalance() +"with account ID" + accountId);
+                } else {
+                        System.out.println("Account not found.");
+                }
+
+        }
+        private static void withdraw() {
+                if (bank == null) {
+                        System.out.println("Please create a bank first.");
+                        return;
+                }
+                System.out.print("Enter account ID: ");
+                int accountId = scanner.nextInt();
+                Account account = bank.getAccount(accountId);
+                if (account != null) {
+                        System.out.print("Enter withdrawal amount: ");
+                        double amount = scanner.nextDouble();
+                        if (account.getBalance() >= amount) {
+                                account.withdraw(amount);
+                                System.out.println("Withdrawal successful. New balance: $" + account.getBalance());
+                        } else {
+                                System.out.println("Not enough funds.");
+                        }
+                } else {
+                        System.out.println("Account not found.");
+                }
+        }
+
+
+
 }
 

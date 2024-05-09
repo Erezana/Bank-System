@@ -24,6 +24,14 @@ public class Bank {
         accounts.add(account);
         System.out.println("Account created successfully");
     }
+    public Account getAccount(int accountId) {
+        for (Account account : accounts) {
+            if (account.getAccountId() == accountId) {
+                return account;
+            }
+        }
+        return null; // Account not found
+    }
 
 
 
