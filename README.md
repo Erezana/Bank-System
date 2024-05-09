@@ -1,9 +1,11 @@
 
 Bank Management System
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 This project is a Java application designed to manage banking operations such as account creation, deposits, withdrawals, transfers, and transaction history tracking. It provides a simple interface for users to interact with the bank's functionalities.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Usage:
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 The Bank Management System offers the following functionalities:
 Create Bank: Allows users to create a new bank with specified transaction fees.
 Open Account: Enables the creation of new accounts within the bank.
@@ -13,8 +15,9 @@ Transfer: Allows users to transfer funds between accounts.
 Display Transactions: Displays transaction history for a specified account.
 Check Account Balance: Displays the current balance for a specified account.
 Check Bank Accounts: Displays a list of accounts in the bank along with their details and transaction history.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 How to Start the Application
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 To start the Bank Management System application, follow these steps:
 -Run the Main Method:
    Execute the main method of the application. This will launch the application and display a menu with 9 options in the console.
@@ -34,8 +37,9 @@ To start the Bank Management System application, follow these steps:
   services.
 -Exit the Program:
 To exit the program, select the "Exit" option from the menu.
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Structure:
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 This project has four classes: Account, Transaction, Bank and Main class.
 
 Account Class:
@@ -52,7 +56,7 @@ This class provides methods to create a new bank, open accounts, perform transac
 
 Main Class"
 This class provides a command-line interface for users to interact with the system's functionalities, such as creating a bank, opening accounts, performing transactions, and checking account details.
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 
